@@ -1,0 +1,40 @@
+﻿@model FinalQuizProject.Models.TBL_QUESTION
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>QuizStart</title>
+</head>
+<body>
+    @using (Html.BeginForm("QuizStart","Home",FormMethod.Post))
+    {
+
+        <h1 style="text-align:center;">@Model.QUESTION_TXT</h1>
+        <div>
+            @Html.RadioButtonFor(x => x.OPA, new { @class = "form-control" }) @Model.OPA
+        </div>
+        <div>
+            @Html.RadioButtonFor(x => x.OPB, new { @class = "form-control" }) @Model.OPB
+        </div>
+        <div>
+            @Html.RadioButtonFor(x => x.OPC, new { @class = "form-control" }) @Model.OPC
+        </div>
+        <div>
+            @Html.RadioButtonFor(x => x.OPD, new { @class = "form-control" }) @Model.OPD
+        </div>
+        <div>
+            <input type="text" value="@Model.COP" class="form-control" />
+        </div>
+        <div>
+            <input type="submit" value="Submit" class="btn btn-success" />
+        </div>
+
+    }
+</body>
+</html>

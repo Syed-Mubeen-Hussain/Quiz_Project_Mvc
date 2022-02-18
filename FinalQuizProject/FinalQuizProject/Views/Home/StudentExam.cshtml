@@ -1,0 +1,71 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Student Exam</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+    <style>
+        body {
+            background-color:green;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 50px;
+            color: white;
+            font-family: monospace;
+            margin-top: 85px;
+        }
+
+        div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        #room {
+            width: 52%;
+            margin-top: 19px;
+            height: 35px;
+            font-size: 18px;
+        }
+
+        #btn {
+            width: 52%;
+            margin-top: 25px;
+            font-size: 20px;
+            background-color: orange;
+            border: none;
+            color: white;
+        }
+    </style>
+
+</head>
+<body>
+    @if (ViewBag.error != null)
+    {
+        <div class="alert alert-danger">
+            <strong>Error !</strong> @ViewBag.error
+        </div>
+    }
+    @using (Html.BeginForm())
+    {
+        <div>
+            <h1>Enter Room Number</h1>
+            <input type="text" id="room" class="form-control" name="room" required value="" />
+
+            <input type="submit" id="btn" class="btn btn-default" value="Submit" />
+        </div>
+
+    }
+</body>
+</html>

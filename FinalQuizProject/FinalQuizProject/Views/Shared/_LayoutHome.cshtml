@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+            box-sizing:border-box;
+        }
+        body{
+            margin:0px 20px;
+        }
+    </style>
+</head>
+<body>
+    
+        <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2" style="border:1px solid #808080;height:900px;">
+                <div class="list-group">
+                    <a href="@Url.Action("Dashboard","Home")" class="list-group-item">Dashboard</a>
+                    <a href="@Url.Action("Addcategory","Home")" class="list-group-item">Add a Category</a>
+                    <a href ="@Url.Action("Addquestion","Home")" class="list-group-item">Add a Question</a>
+                    <a href="#" class="list-group-item">Report</a>
+                    <a href="@Url.Action("Logout","Home")" class="list-group-item">Logout</a>
+                </div>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10" style="border:1px solid #808080;height:900px;">
+                @RenderBody()
+            </div>
+        </div>
+    
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿@model FinalQuizProject.Models.TBL_QUESTION
+
+@{
+    ViewBag.Title = "Add Questions";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Add Questions</h2>
+
+@if (ViewBag.addquestion != null)
+{
+    <div class="alert alert-warning">
+        <strong>Question !</strong> @ViewBag.addquestion
+    </div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <div class="form-group">
+                <label class="control-label col-md-2">Category Name</label>
+                <div class="col-md-10">
+                    @Html.DropDownList("QUESTION_FK_CAT", ViewBag.cat as SelectList, "---Select Category Name---", htmlAttributes: new { @class = "form-control",@Required = true })
+                    @Html.ValidationMessageFor(model => model.QUESTION_FK_CAT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Question</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.QUESTION_TXT, new { htmlAttributes = new { @class = "form-control",@Required = true } })
+                    @Html.ValidationMessageFor(model => model.QUESTION_TXT, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Option A</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OPA, new { htmlAttributes = new { @class = "form-control",@Required = true } })
+                    @Html.ValidationMessageFor(model => model.OPA, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Option B</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OPB, new { htmlAttributes = new { @class = "form-control",@Required = true } })
+                    @Html.ValidationMessageFor(model => model.OPB, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Option C</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OPC, new { htmlAttributes = new { @class = "form-control",@Required = true } })
+                    @Html.ValidationMessageFor(model => model.OPC, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Option D</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.OPD, new { htmlAttributes = new { @class = "form-control",@Required = true } })
+                    @Html.ValidationMessageFor(model => model.OPD, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2">Correct Option</label>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.COP, new { htmlAttributes = new { @class = "form-control",@Required = true, @placeholder = "A , B , C , D" } })
+                    @Html.ValidationMessageFor(model => model.COP, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Categories", "Addcategory")
+</div>

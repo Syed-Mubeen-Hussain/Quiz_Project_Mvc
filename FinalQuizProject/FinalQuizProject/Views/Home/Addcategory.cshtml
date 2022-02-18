@@ -1,0 +1,58 @@
+﻿@model FinalQuizProject.Models.TBL_CATEGORY
+
+@{
+    ViewBag.Title = "Add Categories";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Add Categories</h2>
+
+<h1 class="text-center">@ViewBag.add</h1>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Category Name</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CAT_NAME, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CAT_NAME, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+    <br />
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th>Category Id</th>
+                <th>Category Name</th>
+                <th>Category Encrypted String</th>
+                <th>Admin Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.list)
+            {
+            <tr>
+                <td>@item.CAT_ID</td>
+                <td>@item.CAT_NAME</td>
+                <td>@item.CAT_ENCRYPTEDSTRING</td>
+                <td>@ViewBag.admin_name.AD_NAME</td>
+            </tr>
+            }
+        </tbody>
+    </table>
